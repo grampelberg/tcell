@@ -20,8 +20,8 @@ import (
 	"fmt"
 	"os"
 
-	"github.com/gdamore/tcell"
-	"github.com/gdamore/tcell/encoding"
+	"github.com/grampelberg/tcell"
+	"github.com/grampelberg/tcell/encoding"
 	runewidth "github.com/mattn/go-runewidth"
 )
 

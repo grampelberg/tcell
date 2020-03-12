@@ -49,6 +49,7 @@ func NewTerminfoScreen() (Screen, error) {
 		terminfo.AddTerminfo(ti)
 	}
 	t := &tScreen{ti: ti}
+	t.driver = &defaultTermDriver{}
 
 	t.keyexist = make(map[Key]bool)
 	t.keycodes = make(map[string]*tKeyCode)
@@ -75,6 +76,7 @@ type tKeyCode struct {
 // tScreen represents a screen backed by a terminfo implementation.
 type tScreen struct {
 	ti        *terminfo.Terminfo
+	driver    TermDriver
 	h         int
 	w         int
 	fini      bool
@@ -1434,3 +1436,7 @@ func (t *tScreen) HasKey(k Key) bool {
 }
 
 func (t *tScreen) Resize(int, int, int, int) {}
+
+func (t *tScreen) SetDriver(driver TermDriver) {
+	t.driver = driver
+}
